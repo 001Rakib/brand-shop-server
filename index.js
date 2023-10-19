@@ -36,6 +36,12 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    app.post("/brandProducts", async (req, res) => {
+      const newProduct = req.body;
+      console.log(newProduct);
+      const result = await brandsCollection.insertOne(newProduct);
+      res.send(result);
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
